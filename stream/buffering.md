@@ -42,3 +42,7 @@ Because data may be written to the socket at a faster or slower rate than data
 is received, it is important for each side to operate (and buffer) independently
 of the other.
 
+不管是可写还是可读的流数据都会储存在一个内部的缓冲区域，在这个缓冲区里面能够分别使用`writable._writableState.getBuffer()`或者`readable.__readableState.buffer()`来重新获取。
+
+潜在缓冲的数据量取决于传递到流的构造函数的`highWaterMark`的设置。对普通的流来说，`highWaterMark`的设置特指一定数量的字节。对于在对象模式中操作的流来说，`highWaterMark`的设置特指一定数量的对象。
+
